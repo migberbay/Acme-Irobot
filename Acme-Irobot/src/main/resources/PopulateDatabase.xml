@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ * PopulateDatabase.xml
+ *
+ * Copyright (C) 2019 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+	
+	<!-- User accounts -->
+
+	<bean id="userAccount1" class="security.UserAccount">
+		<property name="username" value="admin" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount2" class="security.UserAccount">
+		<property name="username" value="customer1" />
+		<property name="password" value="ffbc4675f864e0e9aab8bdf7a0437010" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount3" class="security.UserAccount">
+		<property name="username" value="scientist1" />
+		<property name="password" value="b5457bcf658ca5584b7062323a687b72" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="SCIENTIST" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount4" class="security.UserAccount">
+		<property name="username" value="customer2" />
+		<property name="password" value="5ce4d191fd14ac85a1469fb8c29b7a7b" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount5" class="security.UserAccount">
+		<property name="username" value="customer3" />
+		<property name="password" value="033f7f6121501ae98285ad77f216d5e7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount6" class="security.UserAccount">
+		<property name="username" value="scientist2" />
+		<property name="password" value="1d2d2747d200c65c1e9fee0642b35eeb" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="SCIENTIST" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount7" class="security.UserAccount">
+		<property name="username" value="scientist3" />
+		<property name="password" value="c58d2323c3cfc2b9398c1cfad4cc0eb8" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="SCIENTIST" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- ACTOR -->
+	<!-- ADMIN -->
+	<bean id="admin" class="domain.Admin">
+		<property name="name" value="Lucas" />
+		<property name="surnames" value="El Increíble"/>
+		<property name="photo" value="http://www.pinterest.com/asdllasd123.jpg" />
+		<property name="email" value="email@mail.com" />
+		<property name="phone" value="+34623456789" />
+		<property name="userAccount" ref="userAccount1" />
+		<property name="comments">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- CUSTOMER -->
+	<bean id="customer1" class="domain.Customer">
+		<property name="name" value="Joaquin" />
+		<property name="surnames" value="Romero Rosas"/>
+		<property name="photo" value="http://www.pinterest.com/asdllasd123.jpg" />
+		<property name="email" value="email@mail.com" />
+		<property name="phone" value="+34623456789" />
+		<property name="VATNumber" value="ESD12345678" />
+		<property name="userAccount" ref="userAccount2" />
+		<property name="creditCard"	ref="creditcard1"/>
+		<property name="purchases">
+			<list>
+				<ref bean="purchase1" />
+				<ref bean="purchase2" />
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="customer2" class="domain.Customer">
+		<property name="name" value="Paco" />
+		<property name="surnames" value="Fernandez Rodriguez"/>
+		<property name="photo" value="http://www.pinterest.com/asdllasd123.jpg" />
+		<property name="email" value="email@mail.com" />
+		<property name="phone" value="+34623456789" />
+		<property name="VATNumber" value="ESF98673654" />
+		<property name="userAccount" ref="userAccount4" />
+		<property name="creditCard"	ref="creditcard3"/>
+		<property name="purchases">
+			<list>
+				<ref bean="purchase3" />
+				<ref bean="purchase4" />
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="customer3" class="domain.Customer">
+		<property name="name" value="Miguel" />
+		<property name="surnames" value="Loco Playa"/>
+		<property name="photo" value="http://www.pinterest.com/asdllasd123.jpg" />
+		<property name="email" value="email@mail.com" />
+		<property name="phone" value="+34623456789" />
+		<property name="VATNumber" value="EST78908765" />
+		<property name="userAccount" ref="userAccount5" />
+		<property name="creditCard"	ref="creditcard4"/>
+		<property name="purchases">
+			<list>
+				<ref bean="purchase5" />
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+
+	
+	<!-- SCIENTIST -->
+	<bean id="scientist1" class="domain.Scientist">
+		<property name="name" value="Pachurro" />
+		<property name="surnames" value="Filete de Pollo"/>
+		<property name="photo" value="http://www.pinterest.com/asdllasd123.jpg" />
+		<property name="email" value="email@mail.com" />
+		<property name="phone" value="+34623456789" />
+		<property name="VATNumber" value="ESQ12345678" />
+		<property name="userAccount" ref="userAccount3" />
+		<property name="creditCard"	ref="creditcard2"/>
+		<property name="irobots">
+			<list>
+				<ref bean="irobot1" />
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="scientist2" class="domain.Scientist">
+		<property name="name" value="Mitosis" />
+		<property name="surnames" value="Macarrones con Tomate"/>
+		<property name="photo" value="http://www.pinterest.com/asdllasd123.jpg" />
+		<property name="email" value="email@mail.com" />
+		<property name="phone" value="+34623456789" />
+		<property name="VATNumber" value="ESW56780912" />
+		<property name="userAccount" ref="userAccount6" />
+		<property name="creditCard"	ref="creditcard5"/>
+		<property name="irobots">
+			<list>
+				<ref bean="irobot2" />
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="scientist3" class="domain.Scientist">
+		<property name="name" value="Machoke" />
+		<property name="surnames" value="Bistro de atun"/>
+		<property name="photo" value="http://www.pinterest.com/asdllasd123.jpg" />
+		<property name="email" value="email@mail.com" />
+		<property name="phone" value="+34623456789" />
+		<property name="VATNumber" value="ESF78901792" />
+		<property name="userAccount" ref="userAccount7" />
+		<property name="creditCard"	ref="creditcard6"/>
+		<property name="irobots">
+			<list>
+				<ref bean="irobot3" />
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	
+	
+	<!-- IROBOT -->
+	<bean id="irobot1" class="domain.Irobot">
+		<property name="description" value="description irobot 1" />
+		<property name="title" value="title irobot 1"/>
+		<property name="ticker" value="FILE-6354" />
+		<property name="price" value="999" />
+		<property name="isDecomissioned" value = "false"/>
+		<property name="scientist" ref="scientist1" />
+		<property name="purchases">
+			<list>
+				<ref bean="purchase1" />
+				<ref bean="purchase5" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="irobot2" class="domain.Irobot">
+		<property name="description" value="description irobot 2" />
+		<property name="title" value="title irobot 2"/>
+		<property name="ticker" value="MACA-6354" />
+		<property name="price" value="345" />
+		<property name="isDecomissioned" value = "false"/>
+		<property name="scientist" ref="scientist2" />
+		<property name="purchases">
+			<list>
+				<ref bean="purchase2" />
+				<ref bean="purchase3" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="irobot3" class="domain.Irobot">
+		<property name="description" value="description irobot3" />
+		<property name="title" value="title irobot 3"/>
+		<property name="ticker" value="BIST-6354" />
+		<property name="price" value="678" />
+		<property name="isDecomissioned" value = "false"/>
+		<property name="scientist" ref="scientist3" />
+		<property name="purchases">
+			<list>
+				<ref bean="purchase4" />
+			</list>
+		</property>
+	</bean>
+	
+	<!-- PURCHASE -->
+	<bean id="purchase1" class="domain.Purchase">
+		<property name="moment" value="2019/07/07 18:00" />
+		<property name="holder" value="holder creditcard1" />
+		<property name="make" value="VISA"/>
+		<property name="number" value="6785986217384657" />
+		<property name="expirationDate" value="2022/07/07 18:00" />
+		<property name="CVV" value="678" />
+		<property name="irobot" ref="irobot1" />
+		<property name="customer" ref="customer1" />
+	</bean>
+	
+	<bean id="purchase2" class="domain.Purchase">
+		<property name="moment" value="2019/06/07 18:00" />
+		<property name="holder" value="holder creditcard1" />
+		<property name="make" value="VISA"/>
+		<property name="number" value="6785986217384657" />
+		<property name="expirationDate" value="2022/07/07 18:00" />
+		<property name="CVV" value="678" />
+		<property name="irobot" ref="irobot2" />
+		<property name="customer" ref="customer1" />
+	</bean>
+	
+	<bean id="purchase3" class="domain.Purchase">
+		<property name="moment" value="2019/06/17 18:00" />
+		<property name="holder" value="holder creditcard3" />
+		<property name="make" value="VISA"/>
+		<property name="number" value="8976562735164789" />
+		<property name="expirationDate" value="2023/07/07 18:00" />
+		<property name="CVV" value="789" />
+		<property name="irobot" ref="irobot2" />
+		<property name="customer" ref="customer2" />
+	</bean>
+	
+	<bean id="purchase4" class="domain.Purchase">
+		<property name="moment" value="2019/07/07 18:00" />
+		<property name="holder" value="holder creditcard3" />
+		<property name="make" value="VISA"/>
+		<property name="number" value="8976562735164789" />
+		<property name="expirationDate" value="2023/07/07 18:00" />
+		<property name="CVV" value="789" />
+		<property name="irobot" ref="irobot3" />
+		<property name="customer" ref="customer2" />
+	</bean>
+	
+	<bean id="purchase5" class="domain.Purchase">
+		<property name="moment" value="2019/05/27 18:00" />
+		<property name="holder" value="holder creditcard4" />
+		<property name="make" value="VISA"/>
+		<property name="number" value="6789687998678679" />
+		<property name="expirationDate" value="2023/05/07 18:00" />
+		<property name="CVV" value="321" />
+		<property name="irobot" ref="irobot1" />
+		<property name="customer" ref="customer3" />
+	</bean>
+	
+	
+	<!-- CREDITCARD -->
+	<bean id="creditcard1" class="domain.CreditCard">
+		<property name="holder" value="holder creditcard1" />
+		<property name="make" value="VISA"/>
+		<property name="number" value="6785986217384657" />
+		<property name="expirationDate" value="2022/07/07 18:00" />
+		<property name="CVV" value="678" />
+	</bean>
+	
+	<bean id="creditcard2" class="domain.CreditCard">
+		<property name="holder" value="holder creditcard2" />
+		<property name="make" value="VISA"/>
+		<property name="number" value="9786567235467162" />
+		<property name="expirationDate" value="2021/05/07 18:00" />
+		<property name="CVV" value="432" />
+	</bean>
+	
+	<bean id="creditcard3" class="domain.CreditCard">
+		<property name="holder" value="holder creditcard3" />
+		<property name="make" value="VISA"/>
+		<property name="number" value="8976562735164789" />
+		<property name="expirationDate" value="2023/07/07 18:00" />
+		<property name="CVV" value="789" />
+	</bean>
+	
+	<bean id="creditcard4" class="domain.CreditCard">
+		<property name="holder" value="holder creditcard4" />
+		<property name="make" value="VISA"/>
+		<property name="number" value="6789687998678679" />
+		<property name="expirationDate" value="2023/05/07 18:00" />
+		<property name="CVV" value="321" />
+	</bean>
+	
+	<bean id="creditcard5" class="domain.CreditCard">
+		<property name="holder" value="holder creditcard5" />
+		<property name="make" value="VISA"/>
+		<property name="number" value="7890097809870987" />
+		<property name="expirationDate" value="2021/04/27 18:00" />
+		<property name="CVV" value="809" />
+	</bean>
+	
+	<bean id="creditcard6" class="domain.CreditCard">
+		<property name="holder" value="holder creditcard6" />
+		<property name="make" value="VISA"/>
+		<property name="number" value="7685675487654758" />
+		<property name="expirationDate" value="2024/07/07 18:00" />
+		<property name="CVV" value="879" />
+	</bean>
+	
+	<!-- CONFIGURATION -->
+	
+	<bean id="configuration1" class="domain.Configuration">
+		<property name="banner" value="https://i.ibb.co/6Bpvwck/acme-irobot.png" />
+		<property name="defaultPhoneCode" value="34" />
+		<property name="systemName" value="Acme IRobot" />
+		<property name="welcomeTextEnglish"
+			value="Welcome to Acme iRobot! Welcome to a new era of computing"/>
+		<property name="welcomeTextSpanish"
+			value="¡Bienvenidos a Acme iRobot! ¡Bienvenidosa una nueva era de la computación!" />
+	</bean>
+
+
+</beans>
